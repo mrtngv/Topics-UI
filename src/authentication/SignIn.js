@@ -19,14 +19,20 @@ const theme = createTheme({
 });
 
 export default function SignIn() {
+    const [errorText, setErrorText] = React.useState('');
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({ key: data.get('key') });
+        if (data.get('key').length !== 32) {
+            setErrorText("Key must be exactly 32 character long!");
+            return;
+        }
+        window.location.href = 'http://localhost:3000/';
     };
 
     const onMouseEnterAvatar = (event) => {
-        event.target.style.cursor='pointer';
+        event.target.style.cursor = 'pointer';
     }
 
     const onAvatarGitHubClick = () => {
@@ -49,9 +55,11 @@ export default function SignIn() {
                     <Typography component="h1" variant="h5">Sign in</Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
-                            error={false}
-                            defaultValue="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                            helperText='Error'
+                            onChange={() => setErrorText('')}
+                            error={errorText === '' ? false : true}
+                            placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                            multiline
+                            helperText={errorText}
                             variant="filled"
                             margin="normal"
                             required
@@ -72,11 +80,11 @@ export default function SignIn() {
                                 <Link href="signup" variant="body2">{"Don't have an account? Sign Up"}</Link>
                             </Grid>
                         </Grid>
-                        <Stack sx={{ marginTop: 2, }} direction="row" spacing={2}>
-                            <Avatar onMouseEnter={onMouseEnterAvatar} onClick={onAvatarGitHubClick} alt="Cindy Baker" src="/GitHub-Mark-Light-64px.png" />
-                            <Avatar alt="Cindy Baker" src="/GitHub-Mark-Light-64px.png" />
-                            <Avatar alt="Cindy Baker" src="/GitHub-Mark-Light-64px.png" />
-                            <Avatar alt="Cindy Baker" src="/GitHub-Mark-Light-64px.png" />
+                        <Stack sx={{ marginTop: 8, }} align="center" spacing={2}>
+                            <Typography variant="body1" color="text.secondary" align="center">
+                                WhiterabbitX
+                            </Typography>
+                            <Avatar onMouseEnter={onMouseEnterAvatar} align="center" onClick={onAvatarGitHubClick} alt="GitHub" src="/GitHub-Mark-Light-64px.png" />
                         </Stack>
                     </Box>
                 </Box>

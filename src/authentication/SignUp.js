@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -11,17 +10,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function LinkStack() {
-    return (
-        <Stack sx={{ marginTop: 2, }} direction="row" spacing={2}>
-            <Avatar alt="Cindy Baker" src="/GitHub-Mark-64px.png" />
-            <Avatar alt="Cindy Baker" src="/GitHub-Mark-64px.png" />
-            <Avatar alt="Cindy Baker" src="/GitHub-Mark-64px.png" />
-            <Avatar alt="Cindy Baker" src="/GitHub-Mark-64px.png" />
-        </Stack>
-    );
-}
 
 const theme = createTheme({
     palette: {
@@ -81,14 +69,16 @@ export default function SignUp() {
                             sx={{ mt: 3, mb: 2 }}>Sign Up</Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="http://localhost:3000/" variant="body2">
+                                <Link href="http://localhost:3000/signin" variant="body2">
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
-                            <LinkStack sx={{ mt: 5 }} />
                         </Grid>
                     </Box>
                 </Box>
+                <Typography sx={{ marginTop: 8, }} variant="body1" color="text.secondary" align="center">
+                                WhiterabbitX
+                            </Typography>
             </Container>
         </ThemeProvider>
     );

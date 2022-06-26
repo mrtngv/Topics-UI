@@ -3,6 +3,7 @@ import Section from './Section';
 import AppNavigation from './navigation/AppNavigation';
 import SignIn from './authentication/SignIn';
 import SignUp from './authentication/SignUp';
+
 function App() {
   return (
     <div className="App">

@@ -1,26 +1,29 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from './util/Footer';
+import { useSelector } from 'react-redux'
+
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const theme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
 
 export default function Album() {
+    const themeMode = useSelector((state) => state.theme.value);
+    const theme = createTheme({
+        palette: {
+            mode: themeMode,
+        },
+    });
     return (
         <ThemeProvider theme={theme}>
             <main>

@@ -19,6 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { mainListItems, secondaryListItems } from './sideNavigationItems';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeTheme } from '../features/theme/themeSlice';
 
 const drawerWidth = 240;
 
@@ -68,13 +70,22 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const settings = ['Profile', 'Logout', 'Change Theme'];
 
-const theme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
+
 
 function AppNavigation(props) {
+
+    const count = useSelector((state) => state.counter.value);
+    const heading = 'Topics ' + count;
+
+    const themeMode = useSelector((state) => state.theme.value);
+    console.log(themeMode);
+    const dispatch = useDispatch();
+
+    const theme = createTheme({
+        palette: {
+            mode: themeMode,
+        },
+    });
 
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -91,8 +102,8 @@ function AppNavigation(props) {
     const handleCloseUserMenu = (setting) => {
         setAnchorElUser(null);
         setting = setting.toLowerCase();
-        if(setting === 'change theme') {
-            theme.palette.mode='light';
+        if (setting === 'change theme') {
+            dispatch(changeTheme());
             return;
         }
         if (setting === 'logout') {
@@ -123,7 +134,7 @@ function AppNavigation(props) {
                             color="inherit"
                             noWrap
                             sx={{ flexGrow: 1 }}>
-                            Topics
+                            {heading}
                         </Typography>
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">

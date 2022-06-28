@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {getKeyLenght} from '../util/UtilFunctions';
 
 const theme = createTheme({
     palette: {
@@ -24,11 +25,12 @@ export default function SignIn() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        if (data.get('key').length !== 32) {
-            setErrorText("Key must be exactly 32 character long!");
+        if (getKeyLenght(data.get('key')) !== 32) {
+            setErrorText("Invalid Key!");
             return;
         }
-        window.location.href = 'http://localhost:3000/';
+        sessionStorage.setItem('key', data.get('key'));
+        window.location.href = process.env.REACT_APP_UI;
     };
 
     const onMouseEnterAvatar = (event) => {

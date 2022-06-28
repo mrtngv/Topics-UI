@@ -70,15 +70,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const settings = ['Profile', 'Logout', 'Change Theme'];
 
-
-
 function AppNavigation(props) {
-
     const count = useSelector((state) => state.counter.value);
     const heading = 'Topics ' + count;
 
     const themeMode = useSelector((state) => state.theme.value);
-    console.log(themeMode);
     const dispatch = useDispatch();
 
     const theme = createTheme({
@@ -92,7 +88,6 @@ function AppNavigation(props) {
         setOpen(!open);
     };
 
-
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenUserMenu = (event) => {
@@ -101,16 +96,17 @@ function AppNavigation(props) {
 
     const handleCloseUserMenu = (setting) => {
         setAnchorElUser(null);
-        setting = setting.toLowerCase();
+        setting = setting.toString().toLowerCase();
         if (setting === 'change theme') {
             dispatch(changeTheme());
             return;
         }
         if (setting === 'logout') {
+            sessionStorage.removeItem('key');
             setting = "signin";
         }
         setAnchorElUser(null);
-        const url = 'http://localhost:3000/' + setting;
+        const url = process.env.REACT_APP_UI + setting;
         window.location.href = url;
     };
 
@@ -195,8 +191,7 @@ function AppNavigation(props) {
                         flexGrow: 1,
                         height: '100vh',
                         overflow: 'auto',
-                    }}
-                >
+                    }}>
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
@@ -211,13 +206,6 @@ function AppNavigation(props) {
             </Box>
         </ThemeProvider>
     );
-    //{props.children}
-
 }
-
-// export default function AppNavigation() {
-//     return <AppBarContent />;
-// }
-
 
 export default AppNavigation;

@@ -12,14 +12,13 @@ function Footer(props) {
                 WhiterabbitX
             </Typography>
             <Typography variant="h6" align="center" gutterBottom>
-                🤟Linkin Park 🤟 - Talking to Myself
+                🤟Linkin Park 🤟
             </Typography>
             <Typography
                 variant="subtitle1"
                 align="center"
                 color="text.secondary"
-                component="p">
-                {"Redux => example with global state {count}:\nCheck also the heading of the page :)"}
+                component="span">
                 <Counter></Counter>
             </Typography>
         </Box>

@@ -20,11 +20,11 @@ const theme = createTheme({
 export default function SignUp() {
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            name: data.get('name'),
-        });
+        // const data = new FormData(event.currentTarget);
+        // const signUp = {
+        //     email: data.get('email'),
+        //     name: data.get('name')
+        // }
     };
 
     return (
@@ -69,7 +69,7 @@ export default function SignUp() {
                             sx={{ mt: 3, mb: 2 }}>Sign Up</Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="http://localhost:3000/signin" variant="body2">
+                                <Link href={process.env.REACT_APP_UI + 'signin'} variant="body2">
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
@@ -77,8 +77,8 @@ export default function SignUp() {
                     </Box>
                 </Box>
                 <Typography sx={{ marginTop: 8, }} variant="body1" color="text.secondary" align="center">
-                                WhiterabbitX
-                            </Typography>
+                    WhiterabbitX
+                </Typography>
             </Container>
         </ThemeProvider>
     );

@@ -10,7 +10,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 function goToURL(urlTarget) {
-    const url = 'http://localhost:3000/' + urlTarget
+    const url = process.env.REACT_APP_UI + urlTarget
     window.location.href = url;
 }
 

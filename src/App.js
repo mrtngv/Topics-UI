@@ -3,6 +3,7 @@ import Section from './Section';
 import AppNavigation from './navigation/AppNavigation';
 import SignIn from './authentication/SignIn';
 import SignUp from './authentication/SignUp';
+import Topic from './topic/Topic';
 
 function App() {
   const key = sessionStorage.getItem('key');
@@ -15,6 +16,7 @@ function App() {
             : <Route exact path="/" element={<SignIn />} />}
           <Route exact path="/signin" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/topic/:about/:part" element={<AppNavigation><Topic /></AppNavigation>} />
         </Routes>
       </Router>
     </div>

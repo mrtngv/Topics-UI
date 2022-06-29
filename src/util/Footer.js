@@ -5,11 +5,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Counter } from '../features/counter/Counter';
 
-function Footer(props) {
+function Footer() {
     return (
         <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
             <Typography variant="h6" align="center" gutterBottom>
-                WhiterabbitX
+                WhiterabbitX {' '}
+                {new Date().getFullYear()}
             </Typography>
             <Typography variant="h6" align="center" gutterBottom>
                 🤟Linkin Park 🤟

@@ -4,6 +4,7 @@
 .pnp.js
 /coverage
 /build
+/src/mock
 .DS_Store
 .env
 .env.local

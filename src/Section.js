@@ -12,8 +12,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSelector } from 'react-redux'
-import Footer from './util/Footer';
 import { shuffle } from './util/UtilFunctions';
+import Footer from './util/Footer';
+
 const axios = require('axios');
 
 export default function Section() {
@@ -80,7 +81,7 @@ export default function Section() {
                                             <Typography>
                                                 {topic.allHeaders.slice(1).map((header, index) => (
                                                     <span key={index}>
-                                                        <Link color="primary" href={topic.name + "/" + (index + 1)} underline="hover">{header}.</Link><br />
+                                                        <Link color="primary" href={"topic/" + topic.name + "/" + (index + 1)} underline="hover">{header}.</Link><br />
                                                     </span>
                                                 ))}
                                             </Typography>
